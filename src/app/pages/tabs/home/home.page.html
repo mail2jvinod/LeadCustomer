@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-item lines="none">
+      <ion-label>
+        <p>
+          <ion-text>Lead Accessories</ion-text>
+        </p>
+      </ion-label>
+
+      <ion-button slot="end">
+        <ion-icon slot="icon-only" name="cart"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" class="notification">
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-row>
+      <ion-col size="10">
+        <ion-searchbar #searchInput debounce="800" color="light" inputmode="search" class="srchBar" mode="ios"
+          placeholder="Search">
+        </ion-searchbar>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button color="light">
+          <ion-icon slot="icon-only" name="options" color="primary"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <!-- <app-list-heading heading="Special Offers"></app-list-heading> -->
+    <app-banner [bannerImages]="banners()"></app-banner>
+
+    @if(catgList()) {
+
+    <app-list-heading heading="Categories"></app-list-heading>
+    <app-categories [categories]="catgList()"></app-categories>
+
+    }
+
+    @if(brandsList()) {
+
+    <app-list-heading heading="Brands"></app-list-heading>
+    <app-brands [brands]="brandsList()"></app-brands>
+
+    }
+
+    @if(products().length > 0) {
+
+    <app-list-heading heading="Latest Cases"></app-list-heading>
+    <app-product-list-horizontal [products]="products()"></app-product-list-horizontal>
+
+    }
+
+    @if(products().length > 0) {
+
+    <app-list-heading heading="Latest Glasses"></app-list-heading>
+    <app-product-list-horizontal [products]="products()"></app-product-list-horizontal>
+
+    }
+
+    @if(products().length > 0) {
+
+    <app-list-heading heading="Latest Flips"></app-list-heading>
+    <app-product-list-horizontal [products]="products()"></app-product-list-horizontal>
+
+    }
+
+
+  </div>
+</ion-content>

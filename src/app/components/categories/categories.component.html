@@ -1,0 +1,16 @@
+@defer(when categories()) {
+<ion-row>
+  <div class="container">
+    <swiper-container [modules]="swiperModules" [slidesPerView]="4">
+      @for(category of categories(); track $index) {
+      <swiper-slide>
+        <ion-col [routerLink]="['/', 'tabs', 'categoryhome', category?.CategoryId]">
+          <app-image-circle [image]="category!.ImgPath"></app-image-circle>
+          <p class="small text-weight-500">{{ category?.Title }}</p>
+        </ion-col>
+      </swiper-slide>
+      }
+    </swiper-container>
+  </div>
+</ion-row>
+}

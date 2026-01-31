@@ -1,0 +1,30 @@
+@defer(when brands()) {
+
+<ion-grid>
+  <ion-row>
+    @for (item of (showAllRows ? brands() : brands()?.slice(0, initialLimit)); track item) {
+    <ion-col size="3" [routerLink]="['/', 'tabs', 'brandhome', item?.BrandId]">
+      <app-image-circle [image]="item!.ImgPath"></app-image-circle>
+      <p style="font-size:small;">{{ item?.Title }}</p>
+    </ion-col>
+    }
+  </ion-row>
+</ion-grid>
+
+<ion-item-divider class="ion-margin-top">
+  <ion-button slot="end" fill="clear" color="primary" (click)="toggleShowMore()">
+    {{ showAllRows ? 'Show Less' : 'Show More' }}
+  </ion-button>
+</ion-item-divider>
+
+<!-- <ion-row>
+  <div class="container">
+    @for(brand of brands(); track $index) {
+    <ion-col>
+      <app-image-circle [image]="brand!.ImgPath"></app-image-circle>
+      <p class="small text-weight-500">{{ brand?.Title }}</p>
+    </ion-col>
+    }
+  </div>
+</ion-row> -->
+}
