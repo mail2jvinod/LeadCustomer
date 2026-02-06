@@ -7,4 +7,18 @@
 
     </ion-toolbar>
   </ion-header>
+
+
+  <div class="container">
+      <app-banner [bannerImages]="banners()"></app-banner>
+
+      @if(catgList()) {
+
+      <app-list-heading heading="Categories"></app-list-heading>
+      <app-categories [categories]="catgList()"></app-categories>
+
+      }
+
+  </div>
+
 </ion-content>

@@ -7,4 +7,17 @@
 
     </ion-toolbar>
   </ion-header>
+
+  <div class="container">
+      <app-banner [bannerImages]="banners()"></app-banner>
+
+      @if(brandsList()) {
+
+      <app-list-heading heading="Brands"></app-list-heading>
+      <app-brands [brands]="brandsList()"></app-brands>
+
+      }
+
+  </div>
+
 </ion-content>
