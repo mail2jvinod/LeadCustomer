@@ -3,7 +3,6 @@ import { IonContent, IonIcon, IonListHeader, IonToolbar, IonBackButton, IonFabBu
 import { CategoryService } from '../../../services/category/category.service';
 import { Brand } from '../../../interfaces/master-entity';
 import { BannerService } from '../../../services/banner/banner.service';
-import { Banner } from '../../../interfaces/banner.interface';
 import { ListHeadingComponent } from '../../../components/list-heading/list-heading.component';
 import { BannerComponent } from '../../../components/banner/banner.component';
 import { BrandsComponent } from '../../../components/brands/brands.component';
@@ -25,9 +24,8 @@ export class CategoryHomeComponent implements OnInit {
     private categoryService = inject(CategoryService);
     private bannerService = inject(BannerService);
 
-    banners = computed<Banner[]>(() => this.bannerService.getBanners());
+    //banners = computed<Banner[]>(() => this.bannerService.getBanners());
     brandsList = signal<Brand[] | null | undefined>([]);
-
 
     constructor() { }
 

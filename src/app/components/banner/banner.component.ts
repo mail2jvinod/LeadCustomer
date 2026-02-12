@@ -1,6 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, input, OnInit } from '@angular/core';
 import { IonRow, IonicSlides } from '@ionic/angular/standalone';
-import { Banner } from 'src/app/interfaces/banner.interface';
+import { Banner } from 'src/app/interfaces/master-entity';
 
 @Component({
   selector: 'app-banner',
@@ -12,8 +12,8 @@ import { Banner } from 'src/app/interfaces/banner.interface';
 export class BannerComponent  implements OnInit {
 
   swiperModules = [IonicSlides];
-  bannerImages = input<Banner[]>([]);
-
+  bannerImages = input<Banner[] | null | undefined>([]);
+  
   constructor() { }
 
   ngOnInit() {}

@@ -25,11 +25,10 @@ import { BannerComponent } from "../../../components/banner/banner.component";
 import { ProductService } from 'src/app/services/product/product.service';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { Product } from 'src/app/interfaces/product.interface';
-import { Banner } from 'src/app/interfaces/banner.interface';
 import { BannerService } from 'src/app/services/banner/banner.service';
 import { CategoriesComponent } from 'src/app/components/categories/categories.component';
 import { ProductListHorizontalComponent } from 'src/app/components/product-list-horizontal/product-list-horizontal.component';
-import { Brand, Category } from 'src/app/interfaces/master-entity';
+import { Banner, Brand, Category } from 'src/app/interfaces/master-entity';
 import { BrandsComponent } from "src/app/components/brands/brands.component";
 
 @Component({
@@ -58,12 +57,13 @@ import { BrandsComponent } from "src/app/components/brands/brands.component";
 })
 export class HomePage implements OnInit {
 
-  banners = computed<Banner[]>(() => this.bannerService.getBanners());
   products = computed<Product[]>(() => this.productService.getProducts());
 
   private bannerService = inject(BannerService);
   private categoryService = inject(CategoryService);
   private productService = inject(ProductService);
+
+  banners = signal<Banner[] | null>([]);
   catgList = signal<Category[] | null>([]);
   subCatgList = signal<Category[] | null>([]);
   brandsList = signal<Brand[] | null | undefined>([]);
@@ -94,6 +94,14 @@ export class HomePage implements OnInit {
       }
     )
 
+    this.categoryService.getBanners("H").subscribe(
+      {
+        next: (data) => {
+          this.banners.set(data);
+          console.log(data);
+        }
+      }
+    )
 
 
   }

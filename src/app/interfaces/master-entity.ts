@@ -1,3 +1,10 @@
+export interface Banner
+{
+    BannerId: number;
+    BannerFor: string;
+    ImgPath: string;
+}
+
 export interface Category
 {
     CategoryId: number;
